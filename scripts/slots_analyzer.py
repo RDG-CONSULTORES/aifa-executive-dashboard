@@ -6,6 +6,7 @@ Calcula disponibilidad, optimización y visualización de slots
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
+import pytz
 import plotly.graph_objects as go
 import plotly.express as px
 from typing import Dict, List, Tuple
@@ -189,7 +190,9 @@ class AIFASlotsAnalyzer:
     
     def calcular_metricas_tiempo_real(self) -> Dict:
         """Calcula métricas en tiempo real para el dashboard"""
-        ahora = datetime.now()
+        # Zona horaria de Ciudad de México
+        zona_mx = pytz.timezone('America/Mexico_City')
+        ahora = datetime.now(zona_mx)
         hora_actual = ahora.hour
         
         disponibilidad = self.calcular_disponibilidad_slots()
