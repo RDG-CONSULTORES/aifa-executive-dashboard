@@ -1,0 +1,69 @@
+{
+  "timestamp": "2025-08-04T20:52:37.934244",
+  "total_datasets_found": 8,
+  "datasets": [
+    {
+      "name": "programa_pesca_deportiva_turismo_nautico",
+      "title": "Programa Pesca Deportiva y Turismo Náutico",
+      "organization": "Instituto Nacional de Migración (INM)",
+      "url": "https://datos.gob.mx/busca/dataset/programa_pesca_deportiva_turismo_nautico",
+      "search_term": "turismo"
+    },
+    {
+      "name": "ocupacion_hotelera_70_destinos_principales_monitoreados_datatur",
+      "title": "Ocupación hotelera en los 70 destinos principales monitoreados en DataTur​​​​",
+      "organization": "Secretaría de Turismo (SECTUR)",
+      "url": "https://datos.gob.mx/busca/dataset/ocupacion_hotelera_70_destinos_principales_monitoreados_datatur",
+      "search_term": "turismo"
+    },
+    {
+      "name": "servicios_turisticos",
+      "title": "Servicios turísticos",
+      "organization": "Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)",
+      "url": "https://datos.gob.mx/busca/dataset/servicios_turisticos",
+      "search_term": "turismo"
+    },
+    {
+      "name": "sistema_informacion_empresarial_mexicano",
+      "title": "Sistema de Información Empresarial Mexicano",
+      "organization": "Secretaría de Economía (SE)",
+      "url": "https://datos.gob.mx/busca/dataset/sistema_informacion_empresarial_mexicano",
+      "search_term": "turismo"
+    },
+    {
+      "name": "asistentes_actividades_artisticas_culturales_ofrecidas_sector_cultural_federal",
+      "title": "Asistentes, actividades artísticas y culturales ofrecidas por el Sector Cultural Federal",
+      "organization": "Secretaría de Cultura",
+      "url": "https://datos.gob.mx/busca/dataset/asistentes_actividades_artisticas_culturales_ofrecidas_sector_cultural_federal",
+      "search_term": "turismo"
+    },
+    {
+      "name": "movimiento_operacional_aicm",
+      "title": "Movimiento operacional de AICM",
+      "organization": "Aeropuerto Internacional de la Ciudad de México (AICM)",
+      "url": "https://datos.gob.mx/busca/dataset/movimiento_operacional_aicm",
+      "search_term": "aeropuertos"
+    },
+    {
+      "name": "inspeccion_vigilancia_recursos_naturales",
+      "title": "Inspección y vigilancia de los recursos naturales",
+      "organization": "Procuraduría Federal de Protección al Ambiente (PROFEPA)",
+      "url": "https://datos.gob.mx/busca/dataset/inspeccion_vigilancia_recursos_naturales",
+      "search_term": "aeropuertos"
+    },
+    {
+      "name": "ocupacion_hotelera_70_destinos_principales_monitoreados_datatur",
+      "title": "Ocupación hotelera en los 70 destinos principales monitoreados en DataTur​​​​",
+      "organization": "Secretaría de Turismo (SECTUR)",
+      "url": "https://datos.gob.mx/busca/dataset/ocupacion_hotelera_70_destinos_principales_monitoreados_datatur",
+      "search_term": "sectur"
+    }
+  ],
+  "search_terms": [
+    "turismo",
+    "aviacion",
+    "aeropuertos",
+    "sectur",
+    "afac"
+  ]
+}

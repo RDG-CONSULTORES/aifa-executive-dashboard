@@ -1,0 +1,58 @@
+{
+  "timestamp": "2025-08-04T20:52:34.320225",
+  "source": "DATATUR - Sectur México",
+  "turismo_mexico": {
+    "llegadas_internacionales_2023": {
+      "total": 35100000,
+      "crecimiento_vs_2022": "8.5%",
+      "principales_mercados": {
+        "Estados Unidos": 28500000,
+        "Canada": 2800000,
+        "Europa": 1900000,
+        "Sudamerica": 1200000,
+        "Asia": 700000
+      }
+    },
+    "ocupacion_hotelera": {
+      "promedio_nacional_2023": 62.3,
+      "temporada_alta": 78.5,
+      "temporada_baja": 46.8,
+      "destinos_principales": {
+        "Cancún": 82.4,
+        "Playa del Carmen": 79.1,
+        "Los Cabos": 75.8,
+        "Puerto Vallarta": 68.9,
+        "CDMX": 61.2,
+        "Acapulco": 55.7
+      }
+    },
+    "gasto_turistico": {
+      "promedio_por_turista_usd": 1850,
+      "estancia_promedio_dias": 8.2,
+      "gasto_diario_promedio_usd": 225
+    },
+    "conectividad_aerea": {
+      "aeropuertos_internacionales": 58,
+      "rutas_internacionales_activas": 340,
+      "aerolineas_operando": 45,
+      "capacidad_asientos_2023": 89500000
+    }
+  },
+  "impacto_aifa": {
+    "potencial_turistico": {
+      "mercado_objetivo": "Turismo nacional y Centroamérica",
+      "ventaja_competitiva": "Menor saturación vs AICM",
+      "oportunidad_crecimiento": "Alta - nuevos destinos"
+    },
+    "proyecciones_2024": {
+      "pasajeros_potenciales": 2800000,
+      "rutas_turisticas_viables": [
+        "NLU-CUN (Cancún)",
+        "NLU-CZM (Cozumel)",
+        "NLU-PVR (Puerto Vallarta)",
+        "NLU-SJD (Los Cabos)",
+        "NLU-ACA (Acapulco)"
+      ]
+    }
+  }
+}

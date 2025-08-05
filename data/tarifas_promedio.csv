@@ -1,0 +1,9 @@
+source,destination,tarifa_promedio_mxn
+NLU,CUN,1800
+NLU,GDL,1200
+NLU,TIJ,2200
+NLU,LAX,4200
+NLU,MIA,3800
+NLU,NYC,5200
+NLU,MAD,8500
+NLU,CDG,8800

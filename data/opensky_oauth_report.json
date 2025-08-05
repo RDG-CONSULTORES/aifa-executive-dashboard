@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-08-04T20:43:31.248844",
+  "data_source": "OpenSky Network OAuth2",
+  "aifa_operations": {
+    "arrivals_24h": 1,
+    "departures_24h": 14,
+    "total_operations": 15
+  },
+  "enhanced_coverage": {
+    "total_aircraft": 17,
+    "area": "México Central con datos OAuth2 mejorados"
+  },
+  "operational_analysis": {
+    "operations_per_hour": 0.6,
+    "arrival_departure_ratio": 0.07,
+    "peak_activity_estimate": 2.0,
+    "operational_status": "Active"
+  },
+  "route_analysis": {
+    "MMSM-MMTO": 5,
+    "MMSM-MMJC": 3,
+    "MMTJ-MMSM": 1
+  },
+  "airline_analysis": {
+    "VIV": 10,
+    "VOI": 2,
+    "MXA": 2,
+    "SLI": 1
+  }
+}

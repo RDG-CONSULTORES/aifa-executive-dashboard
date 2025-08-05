@@ -1,0 +1,39 @@
+{
+  "fecha_analisis": "2025-08-04 20:40",
+  "mercado": {
+    "tipo_cambio_usd_mxn": 18.87,
+    "gdp_mexico": 1793798859343.27,
+    "inflacion_mexico": 5.52796087314389
+  },
+  "proyecciones_gratuitas": {
+    "crecimiento_estimado_2024": "25%",
+    "nuevas_rutas_potenciales": 5,
+    "pasajeros_proyectados_2024": 975000
+  },
+  "recomendaciones": [
+    {
+      "ruta": "NLU-CUN",
+      "justificacion": "Alta demanda turística",
+      "roi_estimado": "18-22%",
+      "prioridad": "Alta"
+    },
+    {
+      "ruta": "NLU-GDL",
+      "justificacion": "Conexión comercial importante",
+      "roi_estimado": "15-19%",
+      "prioridad": "Alta"
+    },
+    {
+      "ruta": "NLU-MTY",
+      "justificacion": "Hub industrial del norte",
+      "roi_estimado": "14-18%",
+      "prioridad": "Media"
+    }
+  ],
+  "fuentes": [
+    "OpenSky Network (vuelos tiempo real)",
+    "World Bank (datos económicos)",
+    "Exchange Rate API (tipo de cambio)",
+    "Datos públicos AIFA/SCT"
+  ]
+}

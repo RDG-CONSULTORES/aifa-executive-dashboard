@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-08-04T20:52:37.936451",
+  "sources": [
+    "DATATUR",
+    "SCT/AFAC",
+    "Datos Abiertos México"
+  ],
+  "executive_summary": {
+    "turismo_mexico": {
+      "llegadas_internacionales": 35100000,
+      "ocupacion_hotelera_promedio": 62.3,
+      "gasto_promedio_turista": 1850
+    },
+    "aviacion_mexico": {
+      "pasajeros_totales": 89500000,
+      "aeropuertos_comerciales": 58,
+      "crecimiento_2023": "12.3%"
+    }
+  },
+  "aifa_opportunities": {
+    "market_size": {
+      "target_passengers_2024": 2500000,
+      "revenue_potential_usd": 462500000,
+      "market_share_potential": "2.8%"
+    },
+    "route_priorities": [
+      {
+        "route": "NLU-CUN",
+        "justification": "Cancún es #2 aeropuerto México (31.8M pax)",
+        "demand_indicator": "Alto turismo internacional",
+        "competition": "AICM saturado",
+        "priority": "Alta"
+      },
+      {
+        "route": "NLU-GDL",
+        "justification": "Segunda ciudad México por PIB",
+        "demand_indicator": "Mercado business + turismo",
+        "competition": "Moderada",
+        "priority": "Alta"
+      },
+      {
+        "route": "NLU-LAX",
+        "justification": "28.5M mexicanos viajan a USA/año",
+        "demand_indicator": "Mayor mercado internacional",
+        "competition": "AICM dominante",
+        "priority": "Media-Alta"
+      }
+    ]
+  },
+  "data_sources_quality": {
+    "datatur": "Datos oficiales Sectur - Alta confiabilidad",
+    "sct_afac": "Estadísticas oficiales aviación - Alta confiabilidad",
+    "open_data": "Datasets encontrados: 8"
+  }
+}

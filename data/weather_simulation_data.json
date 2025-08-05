@@ -1,0 +1,193 @@
+{
+  "timestamp": "2025-08-04T21:13:57.715772",
+  "airports": {
+    "NLU": {
+      "airport_code": "NLU",
+      "airport_name": "AIFA - Felipe Ángeles",
+      "timestamp": "2025-08-04T21:13:57.715780",
+      "coordinates": {
+        "lat": 19.7411,
+        "lon": -99.0183
+      },
+      "current": {
+        "temperature": 3.4,
+        "feels_like": 6.0,
+        "humidity": 83,
+        "pressure": 774.8,
+        "visibility": 4,
+        "weather": {
+          "main": "Clear",
+          "description": "cielo despejado",
+          "icon": "01d"
+        },
+        "wind": {
+          "speed": 7.7,
+          "direction": 331,
+          "gust": 0
+        },
+        "clouds": 9
+      },
+      "conditions": {
+        "visibility_status": "good",
+        "wind_status": "normal",
+        "weather_status": "good",
+        "overall_status": "good",
+        "flight_impact": "minimal",
+        "recommendations": []
+      },
+      "data_source": "simulated"
+    },
+    "MEX": {
+      "airport_code": "MEX",
+      "airport_name": "CDMX - Benito Juárez",
+      "timestamp": "2025-08-04T21:13:57.715787",
+      "coordinates": {
+        "lat": 19.4363,
+        "lon": -99.0721
+      },
+      "current": {
+        "temperature": 8.6,
+        "feels_like": 11.5,
+        "humidity": 70,
+        "pressure": 776.2,
+        "visibility": 8,
+        "weather": {
+          "main": "Clear",
+          "description": "cielo despejado",
+          "icon": "01d"
+        },
+        "wind": {
+          "speed": 5.9,
+          "direction": 327,
+          "gust": 0
+        },
+        "clouds": 88
+      },
+      "conditions": {
+        "visibility_status": "good",
+        "wind_status": "normal",
+        "weather_status": "good",
+        "overall_status": "good",
+        "flight_impact": "minimal",
+        "recommendations": []
+      },
+      "data_source": "simulated"
+    },
+    "CUN": {
+      "airport_code": "CUN",
+      "airport_name": "Cancún",
+      "timestamp": "2025-08-04T21:13:57.715797",
+      "coordinates": {
+        "lat": 21.0364,
+        "lon": -86.8771
+      },
+      "current": {
+        "temperature": 20.3,
+        "feels_like": 22.1,
+        "humidity": 80,
+        "pressure": 1021.4,
+        "visibility": 10,
+        "weather": {
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        },
+        "wind": {
+          "speed": 9.5,
+          "direction": 205,
+          "gust": 13.0
+        },
+        "clouds": 27
+      },
+      "conditions": {
+        "visibility_status": "good",
+        "wind_status": "normal",
+        "weather_status": "adverse",
+        "overall_status": "caution",
+        "flight_impact": "moderate",
+        "recommendations": [
+          "Precipitación - posibles retrasos menores"
+        ]
+      },
+      "data_source": "simulated"
+    },
+    "GDL": {
+      "airport_code": "GDL",
+      "airport_name": "Guadalajara",
+      "timestamp": "2025-08-04T21:13:57.715806",
+      "coordinates": {
+        "lat": 20.5218,
+        "lon": -103.311
+      },
+      "current": {
+        "temperature": 17.0,
+        "feels_like": 15.6,
+        "humidity": 80,
+        "pressure": 838.7,
+        "visibility": 4,
+        "weather": {
+          "main": "Clouds",
+          "description": "nublado",
+          "icon": "03d"
+        },
+        "wind": {
+          "speed": 10.0,
+          "direction": 126,
+          "gust": 16.4
+        },
+        "clouds": 68
+      },
+      "conditions": {
+        "visibility_status": "good",
+        "wind_status": "normal",
+        "weather_status": "good",
+        "overall_status": "good",
+        "flight_impact": "minimal",
+        "recommendations": []
+      },
+      "data_source": "simulated"
+    },
+    "TIJ": {
+      "airport_code": "TIJ",
+      "airport_name": "Tijuana",
+      "timestamp": "2025-08-04T21:13:57.715814",
+      "coordinates": {
+        "lat": 32.5411,
+        "lon": -116.97
+      },
+      "current": {
+        "temperature": 9.0,
+        "feels_like": 12.0,
+        "humidity": 77,
+        "pressure": 997.3,
+        "visibility": 10,
+        "weather": {
+          "main": "Clear",
+          "description": "cielo despejado",
+          "icon": "01d"
+        },
+        "wind": {
+          "speed": 11.3,
+          "direction": 260,
+          "gust": 17.0
+        },
+        "clouds": 96
+      },
+      "conditions": {
+        "visibility_status": "good",
+        "wind_status": "moderate",
+        "weather_status": "good",
+        "overall_status": "good",
+        "flight_impact": "minimal",
+        "recommendations": []
+      },
+      "data_source": "simulated"
+    }
+  },
+  "summary": {
+    "total_airports": 5,
+    "successful_requests": 5,
+    "failed_requests": 0
+  },
+  "data_source": "simulated"
+}

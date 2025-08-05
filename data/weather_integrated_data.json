@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-08-04T21:17:22.049194",
+  "data_source": "simulated",
+  "airports": {
+    "NLU": {
+      "name": "AIFA - Felipe Ángeles",
+      "temperature": 3.4,
+      "conditions": "cielo despejado",
+      "wind_speed": 7.7,
+      "visibility": 4,
+      "flight_status": "good",
+      "flight_impact": "minimal",
+      "recommendations": []
+    },
+    "MEX": {
+      "name": "CDMX - Benito Juárez",
+      "temperature": 8.6,
+      "conditions": "cielo despejado",
+      "wind_speed": 5.9,
+      "visibility": 8,
+      "flight_status": "good",
+      "flight_impact": "minimal",
+      "recommendations": []
+    },
+    "CUN": {
+      "name": "Cancún",
+      "temperature": 20.3,
+      "conditions": "lluvia ligera",
+      "wind_speed": 9.5,
+      "visibility": 10,
+      "flight_status": "caution",
+      "flight_impact": "moderate",
+      "recommendations": [
+        "Precipitación - posibles retrasos menores"
+      ]
+    },
+    "GDL": {
+      "name": "Guadalajara",
+      "temperature": 17.0,
+      "conditions": "nublado",
+      "wind_speed": 10.0,
+      "visibility": 4,
+      "flight_status": "good",
+      "flight_impact": "minimal",
+      "recommendations": []
+    },
+    "TIJ": {
+      "name": "Tijuana",
+      "temperature": 9.0,
+      "conditions": "cielo despejado",
+      "wind_speed": 11.3,
+      "visibility": 10,
+      "flight_status": "good",
+      "flight_impact": "minimal",
+      "recommendations": []
+    }
+  },
+  "summary": {
+    "total_airports": 5,
+    "good_conditions": 4,
+    "caution_conditions": 1,
+    "poor_conditions": 0,
+    "operational_impact": "moderate"
+  }
+}

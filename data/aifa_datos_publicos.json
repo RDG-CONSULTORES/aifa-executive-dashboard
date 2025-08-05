@@ -1,0 +1,45 @@
+{
+  "aeropuerto": "Aeropuerto Internacional Felipe Ángeles",
+  "codigo_iata": "NLU",
+  "codigo_icao": "MMSM",
+  "ubicacion": "Santa Lucía, Estado de México",
+  "elevacion": "2298 metros",
+  "pistas": [
+    {
+      "numero": "04/22",
+      "longitud": "4500 metros",
+      "material": "Concreto"
+    },
+    {
+      "numero": "18/36",
+      "longitud": "3500 metros",
+      "material": "Concreto"
+    }
+  ],
+  "capacidad_anual": "20 millones de pasajeros",
+  "aerolineas_actuales": [
+    "VivaAerobus",
+    "Volaris",
+    "Aeromexico",
+    "Magnicharters"
+  ],
+  "destinos_nacionales": [
+    "Cancún",
+    "Guadalajara",
+    "Tijuana",
+    "Monterrey",
+    "Puerto Vallarta",
+    "Los Cabos",
+    "Mérida"
+  ],
+  "destinos_internacionales": [
+    "Los Angeles",
+    "Miami",
+    "Houston"
+  ],
+  "estadisticas_2023": {
+    "pasajeros_totales": 780000,
+    "operaciones": 8500,
+    "carga_toneladas": 1200
+  }
+}

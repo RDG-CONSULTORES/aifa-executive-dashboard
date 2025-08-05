@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-08-04T20:39:21.765842",
+  "total_flights_mexico": 16,
+  "flights_near_aifa_100km": 15,
+  "coverage_area": "México Central (18.5-20.5°N, 100.5-97.5°W)",
+  "countries_detected": [
+    "Kingdom of the Netherlands",
+    "United States",
+    "Mexico",
+    "Spain",
+    "China"
+  ],
+  "airlines_detected": {
+    "AMX": 6,
+    "VIV": 2,
+    "SLI": 2,
+    "KLM": 1,
+    "AAL": 1,
+    "CPA": 1,
+    "FDX": 1,
+    "LAN": 1,
+    "VOI": 1
+  },
+  "altitude_stats": {
+    "min_meters": 2156.46,
+    "max_meters": 10668,
+    "avg_meters": 5326.85625,
+    "flights_below_10000m": 15
+  },
+  "velocity_stats": {
+    "min_mps": 77.47,
+    "max_mps": 234.43,
+    "avg_mps": 164.698125,
+    "avg_kmh": 592.9132500000001
+  },
+  "aifa_analysis": {
+    "flights_in_approach_altitude": 4,
+    "countries_near_aifa": [
+      "Kingdom of the Netherlands",
+      "United States",
+      "Mexico",
+      "China"
+    ],
+    "potential_aifa_traffic": 15,
+    "closest_flight_km": 22.41060633115433
+  }
+}

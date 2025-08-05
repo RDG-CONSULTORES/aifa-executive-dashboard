@@ -1,0 +1,15 @@
+{
+  "aifa_info": {
+    "icao": "MMSM",
+    "iata": "NLU",
+    "name": "Aeropuerto Internacional Felipe Ángeles",
+    "coordinates": [
+      19.7365,
+      -99.0149
+    ],
+    "elevation_meters": 2298,
+    "status": "Operational"
+  },
+  "detection_method": "Proximity analysis from public flight data",
+  "last_updated": "2025-08-04T20:39:21.766777"
+}

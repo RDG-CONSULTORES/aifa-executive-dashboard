@@ -1,0 +1,6 @@
+ruta,aerolinea_sugerida,roi_estimado,demanda_estimada,observaciones
+NLU-GDL,VivaAerobus,18.5%,85000,Alta demanda nacional - ruta doméstica estratégica
+NLU-CUN,Volaris,21.3%,90000,Turismo todo el año - máxima rentabilidad
+NLU-LAX,Aeromexico,15.0%,60000,Conectividad internacional estratégica
+NLU-MIA,American,19.2%,75000,Hub para Latinoamérica - gran potencial
+NLU-NYC,Delta,12.8%,45000,Mercado de negocios premium - riesgo moderado

@@ -1,0 +1,86 @@
+{
+  "timestamp": "2025-08-04T20:52:34.320494",
+  "source": "SCT/AFAC - Gobierno de México",
+  "aviacion_mexico": {
+    "aeropuertos_nacionales": {
+      "total_aeropuertos": 85,
+      "aeropuertos_comerciales": 58,
+      "aeropuertos_internacionales": 35,
+      "nuevos_aeropuertos": [
+        "AIFA (NLU)",
+        "Tulum (TQO)"
+      ]
+    },
+    "estadisticas_2023": {
+      "pasajeros_totales": 89500000,
+      "operaciones_totales": 1245000,
+      "carga_toneladas": 756000,
+      "crecimiento_vs_2022": "12.3%"
+    },
+    "aeropuertos_principales": {
+      "AICM (MEX)": {
+        "pasajeros_2023": 48200000,
+        "operaciones": 445000,
+        "ocupacion_slots": "95%"
+      },
+      "Cancún (CUN)": {
+        "pasajeros_2023": 31800000,
+        "operaciones": 285000,
+        "ocupacion_slots": "78%"
+      },
+      "AIFA (NLU)": {
+        "pasajeros_2023": 1200000,
+        "operaciones": 12500,
+        "ocupacion_slots": "15%",
+        "potencial_crecimiento": "Alto"
+      }
+    },
+    "aerolineas_mexicanas": {
+      "principales": [
+        "Aeroméxico (AM)",
+        "VivaAerobus (VB)",
+        "Volaris (Y4)",
+        "Magnicharters (UJ)"
+      ],
+      "market_share": {
+        "Aeroméxico": "35%",
+        "VivaAerobus": "28%",
+        "Volaris": "25%",
+        "Otros": "12%"
+      }
+    }
+  },
+  "analisis_aifa": {
+    "posicion_estrategica": {
+      "ventajas": [
+        "Menor saturación que AICM",
+        "Slots disponibles para crecimiento",
+        "Tarifas aeroportuarias competitivas",
+        "Infraestructura moderna"
+      ],
+      "desafios": [
+        "Conectividad terrestre en desarrollo",
+        "Reconocimiento de marca limitado",
+        "Base de pasajeros en construcción"
+      ]
+    },
+    "oportunidades_rutas": {
+      "domesticas": [
+        "Guadalajara (GDL) - Alta demanda",
+        "Cancún (CUN) - Turismo",
+        "Monterrey (MTY) - Negocios",
+        "Tijuana (TIJ) - Frontera"
+      ],
+      "internacionales": [
+        "Los Angeles (LAX) - Migración",
+        "Miami (MIA) - Conexión Latinoamérica",
+        "Guatemala (GUA) - Centroamérica"
+      ]
+    },
+    "proyecciones_2024": {
+      "pasajeros_objetivo": 2500000,
+      "nuevas_rutas_estimadas": 8,
+      "crecimiento_esperado": "108%"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "icao24": "0d0ec2",
+    "firstSeen": 1754333472,
+    "estDepartureAirport": "MMTJ",
+    "lastSeen": 1754351365,
+    "estArrivalAirport": "MMSM",
+    "callsign": "VIV3121 ",
+    "estDepartureAirportHorizDistance": 1302,
+    "estDepartureAirportVertDistance": 216,
+    "estArrivalAirportHorizDistance": 20522,
+    "estArrivalAirportVertDistance": 1144,
+    "departureAirportCandidatesCount": 93,
+    "arrivalAirportCandidatesCount": 12
+  }
+]

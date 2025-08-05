@@ -1,0 +1,17 @@
+{
+  "gdp": {
+    "value": 1793798859343.27,
+    "year": "2023",
+    "indicator": "GDP (current US$)"
+  },
+  "inflation": {
+    "value": 5.52796087314389,
+    "year": "2023",
+    "indicator": "Inflation, consumer prices (annual %)"
+  },
+  "population": {
+    "value": 129739759,
+    "year": "2023",
+    "indicator": "Population, total"
+  }
+}
