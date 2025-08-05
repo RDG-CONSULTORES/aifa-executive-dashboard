@@ -26,6 +26,50 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# CSS personalizado para mejorar navegación de tabs
+st.markdown("""
+<style>
+    /* Permitir scroll horizontal en tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 2px;
+        overflow-x: auto;
+        scrollbar-width: thin;
+        padding-bottom: 5px;
+    }
+    
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+    
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Hacer tabs más compactos */
+    .stTabs [data-baseweb="tab"] {
+        min-width: auto;
+        padding: 8px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    /* Ajustar el título para mejor visualización */
+    .main .block-container {
+        padding-top: 2rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # Título principal
 st.title("🛬 AIFA - Simulador de Atracción de Aerolíneas")
 st.markdown("### Análisis de viabilidad y ROI para nuevas rutas aéreas")
@@ -102,8 +146,14 @@ precio_promedio = st.sidebar.number_input(
 # Botón de simulación
 simular = st.sidebar.button("🚀 Ejecutar Simulación", type="primary")
 
-# Layout principal con tabs
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["📈 Simulación", "📊 Datos Históricos", "🎯 Recomendaciones", "📋 Resumen Ejecutivo", "🎰 Slots Aeroportuarios", "🏢 Diagrama Aeropuerto", "🗺️ Mapa Georeferenciado", "📊 KPIs Reales"])
+# Layout principal con tabs reorganizados
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "📊 Dashboard Ejecutivo", 
+    "✈️ Operaciones en Vivo", 
+    "🌤️ Condiciones Actuales", 
+    "📈 Simulador de Rutas", 
+    "🗺️ Mapas y Reportes"
+])
 
 with tab1:
     if simular:
