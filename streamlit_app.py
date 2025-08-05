@@ -26,7 +26,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personalizado para mejorar navegación de tabs
+# CSS personalizado para scroll horizontal de tabs
 st.markdown("""
 <style>
     /* Permitir scroll horizontal en tabs */
@@ -146,13 +146,16 @@ precio_promedio = st.sidebar.number_input(
 # Botón de simulación
 simular = st.sidebar.button("🚀 Ejecutar Simulación", type="primary")
 
-# Layout principal con tabs reorganizados
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📊 Dashboard Ejecutivo", 
-    "✈️ Operaciones en Vivo", 
-    "🌤️ Condiciones Actuales", 
-    "📈 Simulador de Rutas", 
-    "🗺️ Mapas y Reportes"
+# Layout principal con tabs originales (8 tabs)
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+    "📊 Simulación", 
+    "📈 Datos Históricos", 
+    "🎯 Recomendaciones", 
+    "📋 Resumen Ejecutivo",
+    "🎰 Análisis de Slots",
+    "🏢 Diagrama Aeropuerto", 
+    "🗺️ Mapa Georeferenciado",
+    "📊 KPIs Reales"
 ])
 
 with tab1:
@@ -1019,552 +1022,42 @@ with tab8:
             
             st.plotly_chart(fig_crecimiento, use_container_width=True)
             
-            # KPI 3: Posicionamiento Nacional
-            st.markdown("---")
-            st.subheader("🏆 Posicionamiento Nacional")
-            
-            kpi3 = strategic_kpis['kpi_3_posicionamiento']
-            
-            col1, col2, col3, col4 = st.columns(4)
-            
-            with col1:
-                st.metric(
-                    "🎯 Ranking Actual",
-                    f"#{kpi3['posicion_actual']}",
-                    delta=kpi3['movimiento_2024']
-                )
-            
-            with col2:
-                st.metric(
-                    "🎯 Objetivo 2025",
-                    f"#{kpi3['objetivo_2025']}",
-                    delta=kpi3['siguiente_competidor']
-                )
-            
-            with col3:
-                st.metric(
-                    "📊 Brecha Top 5",
-                    kpi3['brecha_pasajeros'],
-                    delta=kpi3['estrategia']
-                )
-            
-            with col4:
-                st.metric(
-                    "🎲 Probabilidad Éxito",
-                    f"{kpi3['probabilidad_exito']:.0f}%",
-                    delta="Alto potencial"
-                )
-            
-            # ✅ SECCIÓN 3: KPIs OPERACIONALES
-            st.subheader("⚙️ KPIs Operacionales")
-            
-            operational_kpis = dashboard_data['kpis_operacionales']
-            
-            # KPI 4: Utilización de Infraestructura
-            kpi4 = operational_kpis['kpi_4_utilizacion_infraestructura']
-            
-            col1, col2, col3 = st.columns(3)
-            
-            with col1:
-                st.metric(
-                    "🚪 Utilización Gates",
-                    f"{kpi4['porcentaje_utilizacion']}%",
-                    delta=f"{kpi4['gates_activos']}/{kpi4['gates_totales']} activos"
-                )
-            
-            with col2:
-                st.metric(
-                    "📊 vs Benchmark Industria",
-                    f"{kpi4['benchmark_industria']}%",
-                    delta=kpi4['estado']
-                )
-            
-            with col3:
-                st.metric(
-                    "🚀 Capacidad Expansión",
-                    kpi4['capacidad_expansion'],
-                    delta=kpi4['oportunidad_mejora']
-                )
-            
-            # KPI 5: Productividad por Gate
-            kpi5 = operational_kpis['kpi_5_productividad_gates']
-            
-            st.markdown("**💡 Productividad por Gate Activo**")
-            col1, col2, col3 = st.columns(3)
-            
-            with col1:
-                st.metric(
-                    "👥 Pasajeros/Gate AIFA",
-                    f"{kpi5['pasajeros_por_gate']:,}",
-                    delta=kpi5['estado']
-                )
-            
-            with col2:
-                st.metric(
-                    "🏢 Pasajeros/Gate AICM",
-                    f"{kpi5['comparacion_aicm']:,}",
-                    delta=f"Ratio: {kpi5['eficiencia_relativa']}"
-                )
-            
-            with col3:
-                st.info(f"""
-                **🎯 Ventaja vs AICM**
-                {kpi5['ventaja_vs_aicm']}
+            # Mostrar más KPIs según disponibilidad
+            if 'kpis_operacionales' in dashboard_data:
+                st.subheader("⚙️ KPIs Operacionales")
+                operational_kpis = dashboard_data['kpis_operacionales']
                 
-                **Impacto:** {kpi5['impacto_negocio']}
-                """)
-            
-            # KPI 6: Datos en Tiempo Real (AviationStack)
-            st.markdown("---")
-            kpi6 = operational_kpis['kpi_6_operaciones_tiempo_real']
-            
-            if kpi6.get('estado') == 'DATOS_REALES_ACTIVOS':
-                # Mostrar datos reales de AviationStack
-                st.success("🎉 **DATOS EN TIEMPO REAL ACTIVOS** - AviationStack API")
-                
-                col1, col2, col3, col4 = st.columns(4)
-                
-                with col1:
-                    st.metric(
-                        "🔄 API Status",
-                        kpi6['api_status'],
-                        delta="CONECTADO"
-                    )
-                
-                with col2:
-                    st.metric(
-                        "✈️ Operaciones Hoy",
-                        kpi6.get('operaciones_dia', 0),
-                        delta=f"Datos: {kpi6.get('precision', 'REAL')}"
-                    )
-                
-                with col3:
-                    st.metric(
-                        "🛫 Salidas Reales",
-                        kpi6.get('salidas_reales', 0),
-                        delta=f"🛬 Llegadas: {kpi6.get('llegadas_reales', 0)}"
-                    )
-                
-                with col4:
-                    st.metric(
-                        "📅 Última Actualización",
-                        kpi6.get('timestamp', '')[:16].replace('T', ' '),
-                        delta="Tiempo real"
-                    )
-                
-                # Detalles de operaciones reales
-                col1, col2 = st.columns(2)
-                
-                with col1:
-                    st.info(f"""
-                    **🎯 Destinos Activos HOY:**
-                    {', '.join(kpi6.get('principales_destinos', [])[:5])}
-                    
-                    **Fuente:** {kpi6.get('fuente', 'AviationStack API')}
-                    """)
-                
-                with col2:
-                    st.info(f"""
-                    **✈️ Aerolíneas Operando HOY:**
-                    {', '.join(kpi6.get('aerolineas_activas', [])[:5])}
-                    
-                    **Estado:** Operaciones verificadas en tiempo real
-                    """)
-                    
-            elif kpi6.get('estado') == 'FALLBACK_SIMULADO':
-                st.warning("⚠️ **DATOS SIMULADOS** - API con limitaciones")
-                
+                # Mostrar algunos KPIs operacionales clave
                 col1, col2, col3 = st.columns(3)
                 
                 with col1:
-                    st.metric(
-                        "🔄 API Status",
-                        kpi6['api_status'],
-                        delta="Limitado"
-                    )
+                    if 'kpi_4_utilizacion_infraestructura' in operational_kpis:
+                        kpi4 = operational_kpis['kpi_4_utilizacion_infraestructura']
+                        st.metric(
+                            "🚪 Utilización Gates",
+                            f"{kpi4['porcentaje_utilizacion']}%",
+                            delta=f"{kpi4['gates_activos']}/{kpi4['gates_totales']} activos"
+                        )
                 
                 with col2:
-                    st.metric(
-                        "✈️ Operaciones/Día",
-                        kpi6.get('operaciones_estimadas_dia', 45),
-                        delta=f"Precisión: {kpi6.get('precision', 'ESTIMADA')}"
-                    )
+                    if 'kpi_6_operaciones_tiempo_real' in operational_kpis:
+                        kpi6 = operational_kpis['kpi_6_operaciones_tiempo_real']
+                        if kpi6.get('estado') == 'DATOS_REALES_ACTIVOS':
+                            st.metric(
+                                "✈️ Operaciones Hoy",
+                                kpi6.get('operaciones_dia', 'N/A'),
+                                delta="Tiempo real"
+                            )
                 
                 with col3:
-                    if 'principales_destinos' in kpi6:
-                        st.write("**🎯 Destinos Estimados:**")
-                        st.write(", ".join(kpi6['principales_destinos'][:3]))
-                        
-            else:
-                st.error(f"""
-                ❌ **{kpi6['nombre']}**: {kpi6.get('estado', 'ERROR')}
-                
-                **Razón:** {kpi6.get('error', 'API no disponible temporalmente')}
-                **Fallback:** {kpi6.get('fallback', 'Datos simulados disponibles')}
-                """)
-            
-            # KPI 7: Puntualidad y Delays (FlightAware)
-            st.markdown("---")
-            kpi7 = operational_kpis.get('kpi_7_puntualidad_real', {})
-            
-            if kpi7.get('estado') == 'DATOS_REALES_ACTIVOS':
-                # Mostrar datos reales de puntualidad de FlightAware
-                st.success("🎯 **PUNTUALIDAD EN TIEMPO REAL** - FlightAware API")
-                
-                col1, col2, col3, col4 = st.columns(4)
-                
-                with col1:
-                    st.metric(
-                        "⏰ Puntualidad AIFA",
-                        f"{kpi7.get('on_time_percentage', 95.0):.1f}%",
-                        delta=f"+{kpi7.get('ventaja_vs_promedio', 13.0):.1f}% vs industria"
-                    )
-                
-                with col2:
-                    delay_status = {
-                        'green': '🟢 EXCELENTE',
-                        'yellow': '🟡 BUENO', 
-                        'orange': '🟠 REGULAR',
-                        'red': '🔴 MEJORABLE'
-                    }
-                    st.metric(
-                        "🚦 Estado Actual",
-                        delay_status.get(kpi7.get('status_color', 'green'), '🟢 EXCELENTE'),
-                        delta=f"{kpi7.get('delay_minutes', 0):.1f} min delay promedio"
-                    )
-                
-                with col3:
-                    st.metric(
-                        "📊 vs Benchmark",
-                        f"{kpi7.get('benchmark_industria', 82.0):.1f}%",
-                        delta="Promedio industria"
-                    )
-                
-                with col4:
-                    st.metric(
-                        "📅 Actualizado",
-                        kpi7.get('timestamp', '')[:16].replace('T', ' '),
-                        delta="FlightAware API"
-                    )
-                
-                # Información detallada
-                col1, col2 = st.columns(2)
-                
-                with col1:
-                    st.info(f"""
-                    **🎯 Análisis de Puntualidad:**
-                    - **Delay promedio:** {kpi7.get('delay_minutes', 0):.1f} minutos
-                    - **Categoría:** {kpi7.get('category', 'none').upper()}
-                    - **Fuente:** {kpi7.get('fuente', 'FlightAware AeroAPI')}
-                    """)
-                
-                with col2:
-                    reasons = kpi7.get('reasons', [])
-                    if reasons:
-                        st.warning(f"""
-                        **⚠️ Razones de Delays:**
-                        {', '.join(reasons[:3])}
-                        """)
-                    else:
-                        st.success(f"""
-                        **✅ Estado Operacional:**
-                        Sin delays significativos reportados
-                        Operaciones normales
-                        """)
-                        
-            elif kpi7.get('estado') == 'LIMITADO_POR_PLAN':
-                st.info("ℹ️ **FLIGHTAWARE - PLAN BÁSICO** - Funcionalidad limitada")
-                
-                col1, col2, col3 = st.columns(3)
-                
-                with col1:
-                    st.metric(
-                        "🔄 API Status",
-                        kpi7.get('api_status', 'LIMITADO'),
-                        delta="Plan básico"
-                    )
-                
-                with col2:
-                    estimado = kpi7.get('datos_estimados', {})
-                    st.metric(
-                        "⏰ Puntualidad Estimada",
-                        f"{estimado.get('puntualidad_estimada', 90.0):.1f}%",
-                        delta=f"{estimado.get('delay_promedio_min', 6.5):.1f} min delay"
-                    )
-                
-                with col3:
-                    st.info(f"""
-                    **🔧 Funciones Disponibles:**
-                    {', '.join(kpi7.get('funciones_disponibles', ['info_aeropuertos', 'delay_stats']))}
-                    """)
-                    
-            else:
-                st.warning(f"""
-                ⚠️ **Puntualidad**: {kpi7.get('estado', 'NO_DISPONIBLE')}
-                
-                **Razón:** {kpi7.get('razon', kpi7.get('error', 'FlightAware no configurado'))}
-                **Datos simulados disponibles:** Puntualidad estimada 87.2%
-                """)
-            
-            # KPI 8: Condiciones Meteorológicas (OpenWeatherMap)
-            st.markdown("---")
-            kpi8 = operational_kpis.get('kpi_8_condiciones_meteorologicas', {})
-            
-            if kpi8.get('estado') == 'DATOS_REALES_ACTIVOS':
-                # Mostrar datos meteorológicos reales de OpenWeatherMap
-                st.success("🌤️ **CONDICIONES METEOROLÓGICAS EN TIEMPO REAL** - OpenWeatherMap API")
-                
-                col1, col2, col3, col4 = st.columns(4)
-                
-                with col1:
-                    st.metric(
-                        "🌡️ Temperatura AIFA",
-                        f"{kpi8.get('temperatura_actual', 20):.1f}°C",
-                        delta=f"Sensación: {kpi8.get('sensacion_termica', 20):.1f}°C"
-                    )
-                
-                with col2:
-                    weather_icons = {
-                        'green': '🟢 EXCELENTE',
-                        'orange': '🟠 REGULAR',
-                        'red': '🔴 ADVERSO'
-                    }
-                    st.metric(
-                        "🌤️ Condiciones Vuelo",
-                        weather_icons.get(kpi8.get('status_color', 'green'), '🟢 EXCELENTE'),
-                        delta=f"Score: {kpi8.get('score_condiciones', 100)}/100"
-                    )
-                
-                with col3:
-                    st.metric(
-                        "💨 Viento",
-                        f"{kpi8.get('velocidad_viento', 0):.1f} m/s",
-                        delta=f"👁️ Visibilidad: {kpi8.get('visibilidad_km', 10):.1f} km"
-                    )
-                
-                with col4:
-                    st.metric(
-                        "📊 API Version",
-                        kpi8.get('api_version', '3.0_onecall').upper(),
-                        delta="OpenWeatherMap"
-                    )
-                
-                # Información meteorológica detallada
-                col1, col2 = st.columns(2)
-                
-                with col1:
-                    st.info(f"""
-                    **🌤️ Condiciones Actuales:**
-                    - **Condición:** {kpi8.get('condicion_general', 'N/A').title()}
-                    - **Humedad:** {kpi8.get('humedad', 0)}%
-                    - **Presión:** {kpi8.get('presion', 1013)} hPa
-                    - **UV Index:** {kpi8.get('uv_index', 0)}
-                    - **Nubes:** {kpi8.get('nubes_porcentaje', 0)}%
-                    """)
-                
-                with col2:
-                    benchmark = kpi8.get('benchmark_operacional', {})
-                    standards = benchmark.get('cumplimiento_estandares', {})
-                    
-                    if standards.get('estado_general') == 'CUMPLE':
-                        st.success(f"""
-                        **✅ Estándares Aviación:**
-                        - **Cumplimiento:** {standards.get('cumplimiento_porcentaje', 100):.1f}%
-                        - **Estado:** {standards.get('estado_general', 'CUMPLE')}
-                        - **Pronóstico:** {kpi8.get('pronostico_horas', 0)} horas disponibles
-                        - **Alertas:** {kpi8.get('alertas_meteorologicas', 0)} activas
-                        """)
-                    else:
-                        st.warning(f"""
-                        **⚠️ Estándares Aviación:**
-                        - **Cumplimiento:** {standards.get('cumplimiento_porcentaje', 100):.1f}%
-                        - **Estado:** {standards.get('estado_general', 'PARCIAL')}
-                        - **Recomendaciones:** Monitorear condiciones
-                        """)
-                
-                # Recomendaciones operacionales
-                recomendaciones = kpi8.get('recomendaciones_operacionales', [])
-                if recomendaciones:
-                    st.warning(f"""
-                    **⚠️ Recomendaciones Operacionales:**
-                    {', '.join(recomendaciones)}
-                    """)
-                else:
-                    st.success("✅ **Condiciones óptimas para operaciones de vuelo**")
-                    
-            elif kpi8.get('estado') == 'FALLBACK_SIMULADO':
-                st.info("ℹ️ **CONDICIONES METEOROLÓGICAS** - Datos simulados")
-                
-                col1, col2, col3 = st.columns(3)
-                
-                with col1:
-                    st.metric(
-                        "🌤️ Condiciones",
-                        kpi8.get('condiciones_estimadas', 'BUENAS').upper(),
-                        delta="Simulado"
-                    )
-                
-                with col2:
-                    st.metric(
-                        "🎯 Impacto Operacional",
-                        kpi8.get('impacto_estimado', 'minimal').upper(),
-                        delta="Estimado"
-                    )
-                
-                with col3:
-                    st.metric(
-                        "📊 Fuente",
-                        kpi8.get('fuente', 'Simulación'),
-                        delta=kpi8.get('precision', 'SIMULADA')
-                    )
-                    
-            else:
-                st.warning(f"""
-                ⚠️ **Condiciones Meteorológicas**: {kpi8.get('estado', 'NO_DISPONIBLE')}
-                
-                **Razón:** {kpi8.get('razon', kpi8.get('error', 'OpenWeatherMap no configurado'))}
-                **Fallback:** {kpi8.get('fallback', 'Datos simulados disponibles')}
-                """)
-            
-            # ✅ SECCIÓN 4: KPIs ECONÓMICOS
-            st.subheader("💰 KPIs de Impacto Económico")
-            
-            economic_kpis = dashboard_data['kpis_economicos']
-            
-            # KPI 7: Derrama Económica
-            kpi7 = economic_kpis['kpi_7_derrama_economica']
-            
-            col1, col2, col3, col4 = st.columns(4)
-            
-            with col1:
-                st.metric(
-                    "💰 Derrama Directa",
-                    f"${kpi7['derrama_directa_mdp']:,.1f}B MXN",
-                    delta="Anual"
-                )
-            
-            with col2:
-                st.metric(
-                    "🔄 Derrama Indirecta",
-                    f"${kpi7['derrama_indirecta_mdp']:,.1f}B MXN",
-                    delta=f"Multiplicador: {kpi7['multiplicador_economico']}x"
-                )
-            
-            with col3:
-                st.metric(
-                    "📊 Derrama Total",
-                    f"${kpi7['derrama_total_mdp']:,.1f}B MXN",
-                    delta=f"{kpi7['empleos_generados']:,} empleos"
-                )
-            
-            with col4:
-                st.info(f"""
-                **💼 Impacto Laboral**
-                
-                **Empleos Generados:**
-                {kpi7['empleos_generados']:,}
-                
-                **Impacto:** {kpi7['impacto_negocio']}
-                """)
-            
-            # KPI 8: ROI de Inversión Pública
-            kpi8 = economic_kpis['kpi_8_roi_inversion_publica']
-            
-            st.markdown("**🏛️ Retorno de Inversión Pública**")
-            col1, col2, col3 = st.columns(3)
-            
-            with col1:
-                st.metric(
-                    "💵 Inversión Total",
-                    f"${kpi8['inversion_total_mdp']:,}B MXN",
-                    delta=f"${kpi8['costo_por_pasajero_anual']:,.0f}/pasajero"
-                )
-            
-            with col2:
-                st.metric(
-                    "⏰ Tiempo Recuperación",
-                    kpi8['tiempo_recuperacion_estimado'],
-                    delta=kpi8['beneficio_social_neto']
-                )
-            
-            with col3:
-                st.metric(
-                    "👥 Empleos/Millón Inversión",
-                    f"{kpi8['empleos_por_millon_inversion']:.1f}",
-                    delta=kpi8['impacto_negocio']
-                )
-            
-            # ✅ SECCIÓN 5: ALERTAS Y RECOMENDACIONES
-            st.subheader("🚨 Alertas y Recomendaciones Estratégicas")
-            
-            # Mostrar alertas
-            if dashboard_data['alertas']:
-                for alerta in dashboard_data['alertas']:
-                    alert_type = alerta['tipo']
-                    if alert_type == 'OPORTUNIDAD':
-                        st.success(f"🎯 **{alerta['kpi']}**: {alerta['mensaje']}")
-                        st.caption(f"💡 Acción recomendada: {alerta['accion']}")
-                    elif alert_type == 'RIESGO':
-                        st.warning(f"⚠️ **{alerta['kpi']}**: {alerta['mensaje']}")
-                        st.caption(f"⚡ Acción recomendada: {alerta['accion']}")
-                    else:
-                        st.info(f"ℹ️ **{alerta['kpi']}**: {alerta['mensaje']}")
-            
-            # Recomendaciones estratégicas
-            st.markdown("**💡 Recomendaciones Estratégicas Prioritarias:**")
-            for i, rec in enumerate(dashboard_data['recomendaciones'], 1):
-                st.markdown(f"{i}. {rec}")
-            
-            # ✅ SECCIÓN 6: FUENTES OFICIALES
-            st.subheader("📋 Fuentes Oficiales Verificadas")
-            
-            sources = gov_connector.get_government_sources()
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                for source_key, source_data in list(sources.items())[:2]:
-                    st.info(f"""
-                    **📊 {source_data['nombre']}**
-                    - **Tipo:** {source_data['tipo']}
-                    - **Actualización:** {source_data['actualizacion']}
-                    - **URL:** {source_data['url'][:50]}...
-                    """)
-            
-            with col2:
-                for source_key, source_data in list(sources.items())[2:]:
-                    st.info(f"""
-                    **📊 {source_data['nombre']}**
-                    - **Tipo:** {source_data['tipo']}
-                    - **Actualización:** {source_data['actualizacion']}
-                    - **URL:** {source_data['url'][:50]}...
-                    """)
-            
-            # ✅ SECCIÓN 7: METADATA DEL REPORTE
-            st.subheader("ℹ️ Información del Reporte")
-            
-            col1, col2, col3 = st.columns(3)
-            
-            with col1:
-                st.caption(f"""
-                **📅 Generado:** {dashboard_data['timestamp'][:19]}
-                **📊 Período:** {dashboard_data['periodo_reporte']}
-                **🔄 Actualización:** Tiempo real
-                """)
-            
-            with col2:
-                st.caption(f"""
-                **📈 KPIs Estratégicos:** {len(dashboard_data['kpis_estrategicos'])}
-                **⚙️ KPIs Operacionales:** {len(dashboard_data['kpis_operacionales'])}
-                **💰 KPIs Económicos:** {len(dashboard_data['kpis_economicos'])}
-                """)
-            
-            with col3:
-                st.caption(f"""
-                **🎯 Score General:** {scorecard['score_general']}/100
-                **📊 Clasificación:** {scorecard['clasificacion']}
-                **📈 Tendencia:** {scorecard['tendencia']}
-                """)
+                    if 'kpi_8_condiciones_meteorologicas' in operational_kpis:
+                        kpi8 = operational_kpis['kpi_8_condiciones_meteorologicas']
+                        if kpi8.get('estado') == 'DATOS_REALES_ACTIVOS':
+                            st.metric(
+                                "🌤️ Temperatura AIFA",
+                                f"{kpi8.get('temperatura_actual', 'N/A')}°C",
+                                delta="OpenWeatherMap"
+                            )
             
         except Exception as e:
             st.error(f"⚠️ Error cargando KPIs reales: {str(e)}")
