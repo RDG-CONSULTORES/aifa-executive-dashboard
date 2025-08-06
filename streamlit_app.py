@@ -45,9 +45,45 @@ footer {
     visibility: hidden;
 }
 
-/* Ocultar botón GitHub si aparece */
+/* OCULTAR COMPLETAMENTE LOGO/BOTÓN DE GITHUB */
 .viewerBadge_container__1QSob {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Selectores adicionales para GitHub badge */
+.viewerBadge_link__1S137,
+.viewerBadge_text__1JaDK {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Ocultar cualquier elemento que contenga "github" */
+[href*="github"],
+[src*="github"],
+a[href*="github.com"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Ocultar elementos con texto "GitHub" */
+*[title*="GitHub"],
+*[alt*="GitHub"],
+*[aria-label*="GitHub"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Ocultar badge genérico */
+.stAppViewBlockContainer .element-container .stMarkdown div[data-testid="stMarkdown"] a[target="_blank"] {
+    display: none !important;
+}
+
+/* Ocultar toolbar con enlaces externos */
+.stToolbar,
+.toolbar {
+    display: none !important;
+    visibility: hidden !important;
 }
 
 /* ENFOQUE MÍNIMO: Solo ocultar elementos específicos del menú */
@@ -358,9 +394,84 @@ function createSidebarToggle() {
     }
 }
 
+// FUNCIÓN PARA ELIMINAR CUALQUIER ELEMENTO DE GITHUB
+function removeGitHubElements() {
+    // Buscar y eliminar elementos por href
+    const githubLinks = document.querySelectorAll('a[href*="github"]');
+    githubLinks.forEach(link => {
+        link.style.display = 'none';
+        link.remove();
+    });
+    
+    // Buscar por texto "GitHub"
+    const allElements = document.querySelectorAll('*');
+    allElements.forEach(element => {
+        if (element.textContent && element.textContent.toLowerCase().includes('github')) {
+            element.style.display = 'none';
+        }
+        if (element.title && element.title.toLowerCase().includes('github')) {
+            element.style.display = 'none';
+        }
+        if (element.alt && element.alt.toLowerCase().includes('github')) {
+            element.style.display = 'none';
+        }
+    });
+    
+    // Eliminar badges específicos
+    const badges = document.querySelectorAll('.viewerBadge_container__1QSob, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK');
+    badges.forEach(badge => {
+        badge.style.display = 'none';
+        badge.remove();
+    });
+    
+    // Eliminar toolbar
+    const toolbars = document.querySelectorAll('.stToolbar, .toolbar');
+    toolbars.forEach(toolbar => {
+        toolbar.style.display = 'none';
+        toolbar.remove();
+    });
+}
+
 // Ejecutar cuando la página esté lista
 setTimeout(createSidebarToggle, 1000);
 setTimeout(createSidebarToggle, 3000); // Segundo intento por si no carga la primera vez
+
+// Eliminar elementos de GitHub continuamente
+setTimeout(removeGitHubElements, 500);
+setTimeout(removeGitHubElements, 2000);
+setTimeout(removeGitHubElements, 5000);
+
+// Observer para eliminar elementos de GitHub que aparezcan dinámicamente
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.addedNodes) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1) { // Element node
+                    // Verificar si el nuevo elemento contiene GitHub
+                    if (node.href && node.href.includes('github')) {
+                        node.style.display = 'none';
+                        node.remove();
+                    }
+                    if (node.textContent && node.textContent.toLowerCase().includes('github')) {
+                        node.style.display = 'none';
+                    }
+                    // Buscar dentro del elemento añadido
+                    const githubElements = node.querySelectorAll ? node.querySelectorAll('a[href*="github"], *[title*="github"], *[alt*="github"]') : [];
+                    githubElements.forEach(el => {
+                        el.style.display = 'none';
+                        el.remove();
+                    });
+                }
+            });
+        }
+    });
+});
+
+// Iniciar observer
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});
 </script>
 """, unsafe_allow_html=True)
 
