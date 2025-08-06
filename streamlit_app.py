@@ -86,14 +86,36 @@ header .css-1avcm0n {
     display: block !important;
 }
 
-/* Approach alternativo: mostrar solo el botón del sidebar */
+/* SIDEBAR TOGGLE - Enfoque más agresivo para versión hosteada */
 [data-testid="collapsedControl"] {
     display: block !important;
     visibility: visible !important;
     z-index: 999999 !important;
     position: fixed !important;
-    top: 0.5rem !important;
-    left: 0.5rem !important;
+    top: 0.75rem !important;
+    left: 0.75rem !important;
+    background: #003566 !important;
+    border-radius: 4px !important;
+    padding: 4px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* SIDEBAR TOGGLE - Selector más amplio */
+.css-1rs6os .css-17lntkn, 
+.css-1d391kg, 
+.css-1y4p8pa,
+.css-1544g2n {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 999999 !important;
+}
+
+/* SIDEBAR TOGGLE - Para cualquier elemento con collapse */
+*[data-testid*="collapse"],
+*[data-testid*="sidebar"] button,
+.stSidebar button {
+    display: block !important;
+    visibility: visible !important;
 }
 
 /* Asegurar que el sidebar toggle sea siempre visible */
@@ -460,9 +482,7 @@ frecuencia_semanal = st.sidebar.slider(
     value=7
 )
 
-# Tabs principales con emojis para mejor visualización
-st.markdown("### 📋 **NAVEGACIÓN PRINCIPAL**")
-st.markdown("*💡 Tip: En pantallas pequeñas, usa scroll horizontal para navegar entre tabs*")
+# Tabs principales
 
 tabs = st.tabs([
     "OPERACIONES", 
