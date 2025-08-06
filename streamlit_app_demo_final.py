@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import sys
 import os
+import pytz
 
 # Agregar la ruta de scripts al path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts'))
@@ -275,6 +276,13 @@ COLORS = {
     "text": "#333333"
 }
 
+# Función para obtener hora de Ciudad de México
+def get_mexico_time():
+    """Obtiene la hora actual de Ciudad de México"""
+    mexico_tz = pytz.timezone('America/Mexico_City')
+    mexico_time = datetime.now(mexico_tz)
+    return mexico_time
+
 # Función para cargar datos
 @st.cache_data
 def cargar_datos():
@@ -356,6 +364,7 @@ def get_responsive_layout(title="", height=400):
     }
 
 # Header principal
+mexico_time = get_mexico_time()
 st.markdown(f"""
 <div class="main-header">
     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -364,8 +373,9 @@ st.markdown(f"""
             <p style="margin: 5px 0 0 0; opacity: 0.9;">Aeropuerto Internacional Felipe Ángeles</p>
         </div>
         <div style="text-align: right;">
-            <div style="font-size: 28px; font-weight: 300;">{datetime.now().strftime('%H:%M')}</div>
+            <div style="font-size: 28px; font-weight: 300;">{mexico_time.strftime('%H:%M')}</div>
             <div style="font-size: 14px; opacity: 0.8;">Hora de Ciudad de México</div>
+            <div style="font-size: 11px; opacity: 0.6;">{mexico_time.strftime('%d/%m/%Y')}</div>
         </div>
     </div>
 </div>
