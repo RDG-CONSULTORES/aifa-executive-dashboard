@@ -50,14 +50,66 @@ footer {
     visibility: hidden;
 }
 
-/* Ocultar header */
-header {
-    visibility: hidden;
+/* Ocultar header pero preservar funcionalidad del sidebar */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
+/* Alternativa más específica para ocultar header sin afectar sidebar */
+.stApp > header {
+    display: none;
+}
+
+/* Preservar el botón de toggle del sidebar */
+button[kind="header"] {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Asegurar que el sidebar toggle esté visible */
+.css-1d391kg, .css-1rs6os, .css-17ziqus {
+    display: block !important;
 }
 
 /* Ocultar botón GitHub si aparece */
 .viewerBadge_container__1QSob {
     display: none;
+}
+
+/* Ocultar elementos específicos del header pero no el sidebar toggle */
+header .css-1avcm0n {
+    display: none;
+}
+
+/* Mantener visible el área del sidebar toggle */
+.css-1y4p8pa {
+    display: block !important;
+}
+
+/* Approach alternativo: mostrar solo el botón del sidebar */
+[data-testid="collapsedControl"] {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: 0.5rem !important;
+    left: 0.5rem !important;
+}
+
+/* Asegurar que el sidebar toggle sea siempre visible */
+.css-1544g2n {
+    display: block !important;
+}
+
+/* Para versiones más recientes de Streamlit */
+button[title="Open sidebar"] {
+    display: block !important;
+    visibility: visible !important;
+}
+
+button[title="Close sidebar"] {
+    display: block !important;
+    visibility: visible !important;
 }
 
 /* Ajustar margen superior */

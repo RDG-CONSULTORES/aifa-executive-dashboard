@@ -6,7 +6,6 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import sys
 import os
-import pytz
 
 # Agregar la ruta de scripts al path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts'))
@@ -50,66 +49,14 @@ footer {
     visibility: hidden;
 }
 
-/* Ocultar header pero preservar funcionalidad del sidebar */
-header[data-testid="stHeader"] {
-    display: none;
-}
-
-/* Alternativa más específica para ocultar header sin afectar sidebar */
-.stApp > header {
-    display: none;
-}
-
-/* Preservar el botón de toggle del sidebar */
-button[kind="header"] {
-    display: block !important;
-    visibility: visible !important;
-}
-
-/* Asegurar que el sidebar toggle esté visible */
-.css-1d391kg, .css-1rs6os, .css-17ziqus {
-    display: block !important;
+/* Ocultar header */
+header {
+    visibility: hidden;
 }
 
 /* Ocultar botón GitHub si aparece */
 .viewerBadge_container__1QSob {
     display: none;
-}
-
-/* Ocultar elementos específicos del header pero no el sidebar toggle */
-header .css-1avcm0n {
-    display: none;
-}
-
-/* Mantener visible el área del sidebar toggle */
-.css-1y4p8pa {
-    display: block !important;
-}
-
-/* Approach alternativo: mostrar solo el botón del sidebar */
-[data-testid="collapsedControl"] {
-    display: block !important;
-    visibility: visible !important;
-    z-index: 999999 !important;
-    position: fixed !important;
-    top: 0.5rem !important;
-    left: 0.5rem !important;
-}
-
-/* Asegurar que el sidebar toggle sea siempre visible */
-.css-1544g2n {
-    display: block !important;
-}
-
-/* Para versiones más recientes de Streamlit */
-button[title="Open sidebar"] {
-    display: block !important;
-    visibility: visible !important;
-}
-
-button[title="Close sidebar"] {
-    display: block !important;
-    visibility: visible !important;
 }
 
 /* Ajustar margen superior */
@@ -185,134 +132,6 @@ button[title="Close sidebar"] {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
-/* ARREGLAR OVERFLOW DE GRÁFICAS */
-.js-plotly-plot, .plotly, .main-svg {
-    max-width: 100% !important;
-    width: 100% !important;
-    overflow-x: auto !important;
-}
-
-.plot-container {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-}
-
-/* TABS RESPONSIVE */
-.stTabs [data-baseweb="tab-list"] {
-    gap: 8px;
-    flex-wrap: wrap !important;
-    overflow-x: auto !important;
-    padding-bottom: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #0496FF #E5E5E5;
-}
-
-.stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
-    height: 6px;
-}
-
-.stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-track {
-    background: #E5E5E5;
-    border-radius: 3px;
-}
-
-.stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-thumb {
-    background: #0496FF;
-    border-radius: 3px;
-}
-
-.stTabs [data-baseweb="tab-list"] button {
-    min-width: 120px !important;
-    white-space: nowrap !important;
-    font-size: 12px !important;
-    padding: 8px 12px !important;
-    flex-shrink: 0 !important;
-}
-
-/* CONTAINER RESPONSIVE */
-.main .block-container {
-    max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-}
-
-/* COLUMNAS RESPONSIVE */
-.stColumn {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-}
-
-/* INDICADORES VISUALES PARA TABS */
-.stTabs [data-baseweb="tab-list"] button[aria-selected="true"] {
-    background-color: #003566 !important;
-    color: white !important;
-    border-bottom: 3px solid #0496FF !important;
-}
-
-.stTabs [data-baseweb="tab-list"] button:hover {
-    background-color: #E5F3FF !important;
-    color: #003566 !important;
-}
-
-/* SIDEBAR RESPONSIVE */
-.css-1d391kg {
-    min-width: 250px !important;
-}
-
-@media (max-width: 1024px) {
-    .stTabs [data-baseweb="tab-list"] button {
-        min-width: 130px !important;
-        font-size: 11px !important;
-        padding: 8px 8px !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .stTabs [data-baseweb="tab-list"] button {
-        min-width: 110px !important;
-        font-size: 10px !important;
-        padding: 6px 6px !important;
-    }
-    
-    .main-header h1 {
-        font-size: 20px !important;
-    }
-    
-    .main-header p {
-        font-size: 12px !important;
-    }
-    
-    .metric-value {
-        font-size: 20px !important;
-    }
-    
-    .metric-label {
-        font-size: 11px !important;
-    }
-    
-    /* Hacer sidebar colapsable en móviles */
-    .css-1d391kg {
-        min-width: 200px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .stTabs [data-baseweb="tab-list"] button {
-        min-width: 80px !important;
-        font-size: 9px !important;
-        padding: 4px 4px !important;
-    }
-    
-    .main-header {
-        padding: 15px !important;
-        margin: -55px -15px 20px !important;
-    }
-    
-    .main-header h1 {
-        font-size: 18px !important;
-    }
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -328,95 +147,22 @@ COLORS = {
     "text": "#333333"
 }
 
-# Función para obtener hora de Ciudad de México
-def get_mexico_time():
-    """Obtiene la hora actual de Ciudad de México"""
-    mexico_tz = pytz.timezone('America/Mexico_City')
-    mexico_time = datetime.now(mexico_tz)
-    return mexico_time
-
 # Función para cargar datos
 @st.cache_data
 def cargar_datos():
-    """Carga datos CSV con múltiples rutas de búsqueda"""
+    data_path = os.path.join(os.path.dirname(__file__), 'data')
     
-    # Múltiples rutas posibles
-    possible_paths = [
-        os.path.join(os.path.dirname(__file__), 'data'),  # Ruta relativa al script
-        os.path.join(os.getcwd(), 'data'),                # Ruta desde directorio actual
-        './data',                                         # Ruta relativa simple
-        'data'                                            # Ruta directa
-    ]
+    rutas = pd.read_csv(os.path.join(data_path, 'rutas_aifa.csv'))
+    pasajeros = pd.read_csv(os.path.join(data_path, 'pasajeros_mensuales.csv'))
+    tarifas = pd.read_csv(os.path.join(data_path, 'tarifas_promedio.csv'))
+    resumen = pd.read_csv(os.path.join(data_path, 'resumen_estrategico.csv'))
     
-    data_path = None
-    
-    # Buscar la ruta correcta
-    for path in possible_paths:
-        test_file = os.path.join(path, 'rutas_aifa.csv')
-        if os.path.exists(test_file):
-            data_path = path
-            break
-    
-    if not data_path:
-        st.error(f"""
-        **Error cargando datos**: No se encontraron los archivos CSV en ninguna de estas rutas:
-        
-        {chr(10).join([f"• {path}" for path in possible_paths])}
-        
-        **Directorio actual**: `{os.getcwd()}`  
-        **Directorio del script**: `{os.path.dirname(__file__)}`
-        
-        Por favor, verifica que los archivos estén en la carpeta `data/`
-        """)
-        st.stop()
-    
-    try:
-        rutas = pd.read_csv(os.path.join(data_path, 'rutas_aifa.csv'))
-        pasajeros = pd.read_csv(os.path.join(data_path, 'pasajeros_mensuales.csv'))
-        tarifas = pd.read_csv(os.path.join(data_path, 'tarifas_promedio.csv'))
-        resumen = pd.read_csv(os.path.join(data_path, 'resumen_estrategico.csv'))
-        
-        # Mostrar éxito en sidebar
-        st.sidebar.success(f"✅ Datos cargados desde: `{data_path}`")
-        
-        return rutas, pasajeros, tarifas, resumen
-        
-    except Exception as e:
-        st.error(f"""
-        **Error cargando datos**: {str(e)}
-        
-        **Ruta encontrada**: `{data_path}`
-        
-        Verifica que todos los archivos CSV necesarios estén presentes.
-        """)
-        st.stop()
+    return rutas, pasajeros, tarifas, resumen
 
 # Cargar datos
 rutas_df, pasajeros_df, tarifas_df, resumen_df = cargar_datos()
 
-# Función helper para layouts responsivos
-def get_responsive_layout(title="", height=400):
-    """Configuración responsiva estándar para gráficas"""
-    return {
-        'title': title,
-        'height': height,
-        'plot_bgcolor': 'white',
-        'paper_bgcolor': 'white',
-        'font': dict(family="Arial, sans-serif", size=12, color=COLORS['text']),
-        'margin': dict(l=50, r=50, t=80, b=50),
-        'xaxis': dict(
-            fixedrange=False,
-            automargin=True
-        ),
-        'yaxis': dict(
-            fixedrange=False,
-            automargin=True
-        ),
-        'autosize': True
-    }
-
 # Header principal
-mexico_time = get_mexico_time()
 st.markdown(f"""
 <div class="main-header">
     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -425,9 +171,8 @@ st.markdown(f"""
             <p style="margin: 5px 0 0 0; opacity: 0.9;">Aeropuerto Internacional Felipe Ángeles</p>
         </div>
         <div style="text-align: right;">
-            <div style="font-size: 28px; font-weight: 300;">{mexico_time.strftime('%H:%M')}</div>
+            <div style="font-size: 28px; font-weight: 300;">{datetime.now().strftime('%H:%M')}</div>
             <div style="font-size: 14px; opacity: 0.8;">Hora de Ciudad de México</div>
-            <div style="font-size: 11px; opacity: 0.6;">{mexico_time.strftime('%d/%m/%Y')}</div>
         </div>
     </div>
 </div>
@@ -460,10 +205,7 @@ frecuencia_semanal = st.sidebar.slider(
     value=7
 )
 
-# Tabs principales con emojis para mejor visualización
-st.markdown("### 📋 **NAVEGACIÓN PRINCIPAL**")
-st.markdown("*💡 Tip: En pantallas pequeñas, usa scroll horizontal para navegar entre tabs*")
-
+# Tabs principales
 tabs = st.tabs([
     "OPERACIONES", 
     "DATOS HISTÓRICOS", 
@@ -472,7 +214,7 @@ tabs = st.tabs([
     "ANÁLISIS DE SLOTS", 
     "INFRAESTRUCTURA", 
     "MAPEO GEOGRÁFICO", 
-    "KPIs TIEMPO REAL"
+    "KPIs EN TIEMPO REAL"
 ])
 
 # TAB 1: OPERACIONES
@@ -561,12 +303,14 @@ with tabs[0]:
         fig_roi.add_hline(y=15, line_dash="dash", line_color=COLORS['warning'], 
                          annotation_text="ROI Objetivo (15%)")
         
-        layout_config = get_responsive_layout("Proyección de ROI por Mes", height=400)
-        layout_config.update({
-            'xaxis_title': "Mes",
-            'yaxis_title': "ROI (%)"
-        })
-        fig_roi.update_layout(layout_config)
+        fig_roi.update_layout(
+            title="Proyección de ROI por Mes",
+            xaxis_title="Mes",
+            yaxis_title="ROI (%)",
+            height=400,
+            plot_bgcolor='white',
+            font=dict(family="Arial, sans-serif", size=12, color=COLORS['text'])
+        )
         
         st.plotly_chart(fig_roi, use_container_width=True)
     else:
@@ -589,7 +333,11 @@ with tabs[1]:
             color_discrete_sequence=[COLORS['primary']]
         )
         
-        fig_pasajeros.update_layout(get_responsive_layout("Evolución de Pasajeros Mensuales AIFA", height=400))
+        fig_pasajeros.update_layout(
+            height=400,
+            plot_bgcolor='white',
+            font=dict(family="Arial, sans-serif", size=12, color=COLORS['text'])
+        )
         
         st.plotly_chart(fig_pasajeros, use_container_width=True)
     
@@ -604,7 +352,11 @@ with tabs[1]:
             color_discrete_sequence=[COLORS['primary']]
         )
         
-        fig_tarifas.update_layout(get_responsive_layout("Tarifas Promedio por Destino", height=400))
+        fig_tarifas.update_layout(
+            height=400,
+            plot_bgcolor='white',
+            font=dict(family="Arial, sans-serif", size=12, color=COLORS['text'])
+        )
         
         st.plotly_chart(fig_tarifas, use_container_width=True)
 
@@ -751,7 +503,7 @@ with tabs[4]:
 with tabs[5]:
     st.header("INFRAESTRUCTURA AEROPORTUARIA")
     
-    # Mostrar métricas primero
+    # Mostrar las métricas primero
     st.subheader("ESPECIFICACIONES TÉCNICAS")
     
     col1, col2, col3 = st.columns(3)
@@ -797,7 +549,7 @@ with tabs[5]:
         st.error(f"Error cargando diagrama original: {str(e)}")
         st.info("Mostrando diagrama alternativo...")
         
-        # Crear diagrama alternativo
+        # Crear un diagrama alternativo como fallback
         fig_layout = go.Figure()
         
         # Pista principal
@@ -812,7 +564,7 @@ with tabs[5]:
             showarrow=False, font=dict(size=12, color=COLORS['text'])
         )
         
-        # Pista secundaria  
+        # Pista secundaria
         fig_layout.add_shape(
             type="rect",
             x0=100, y0=100, x1=700, y1=150,
@@ -858,41 +610,16 @@ with tabs[5]:
         )
         
         st.plotly_chart(fig_layout, use_container_width=True)
-    
-    # Información adicional
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.subheader("CAPACIDADES OPERATIVAS")
-        st.write("🛬 **Operaciones diarias máximas**: 1,320")
-        st.write("✈️ **Tipos de aeronaves**: Narrow body, Wide body, Carga")
-        st.write("🚁 **Helipuerto**: Disponible para operaciones especiales")
-        st.write("⛽ **Combustible**: Sistema centralizado disponible")
-    
-    with col2:
-        st.subheader("SERVICIOS E INSTALACIONES")
-        st.write("🏢 **Área terminal**: 74,000 m²")
-        st.write("🅿️ **Estacionamiento**: 2,500 espacios")
-        st.write("🚌 **Transporte terrestre**: Conexión Metro y autobús")
-        st.write("📡 **Navegación**: ILS Cat II en ambas pistas")
-
-# TAB 7: MAPEO GEOGRÁFICO
-with tabs[6]:
-    st.header("MAPEO GEOGRÁFICO")
-    
-    # Intentar cargar el mapa original
-    try:
-        with st.spinner("Cargando mapa geográfico..."):
-            geo_map = AIFAGeoMap()
-            fig_map = geo_map.create_satellite_map()
-            st.plotly_chart(fig_map, use_container_width=True)
             st.success("✅ Mapa original cargado exitosamente")
         
     except Exception as e:
         st.warning(f"Mapa geográfico original no disponible. Error: {str(e)}")
         st.info("Mostrando mapa alternativo...")
         
-        # Mapa alternativo
+        # Fallback: crear mapa simple con plotly
+        import plotly.graph_objects as go
+        
+        # Coordenadas de AIFA y destinos principales
         locations = {
             'AIFA (NLU)': {'lat': 19.7281, 'lon': -99.0198, 'type': 'hub'},
             'Cancún (CUN)': {'lat': 21.0364, 'lon': -86.8772, 'type': 'domestic'},
@@ -905,7 +632,7 @@ with tabs[6]:
         
         fig_map = go.Figure()
         
-        # AIFA como hub principal
+        # Agregar AIFA como punto principal
         fig_map.add_trace(go.Scattergeo(
             lon=[-99.0198],
             lat=[19.7281],
@@ -915,7 +642,7 @@ with tabs[6]:
             name='AIFA Hub'
         ))
         
-        # Destinos domésticos
+        # Agregar destinos domésticos
         domestic_lats = [loc['lat'] for name, loc in locations.items() if loc['type'] == 'domestic']
         domestic_lons = [loc['lon'] for name, loc in locations.items() if loc['type'] == 'domestic']
         domestic_names = [name for name, loc in locations.items() if loc['type'] == 'domestic']
@@ -929,9 +656,9 @@ with tabs[6]:
             name='Destinos Domésticos'
         ))
         
-        # Destinos internacionales
+        # Agregar destinos internacionales
         intl_lats = [loc['lat'] for name, loc in locations.items() if loc['type'] == 'international']
-        intl_lons = [loc['lon'] for name, loc in locations.items() if loc['type'] == 'international'] 
+        intl_lons = [loc['lon'] for name, loc in locations.items() if loc['type'] == 'international']
         intl_names = [name for name, loc in locations.items() if loc['type'] == 'international']
         
         fig_map.add_trace(go.Scattergeo(
@@ -943,7 +670,7 @@ with tabs[6]:
             name='Destinos Internacionales'
         ))
         
-        # Líneas de rutas
+        # Agregar líneas de rutas desde AIFA
         for name, loc in locations.items():
             if name != 'AIFA (NLU)':
                 fig_map.add_trace(go.Scattergeo(
@@ -975,7 +702,7 @@ with tabs[6]:
         
         st.plotly_chart(fig_map, use_container_width=True)
     
-    # Métricas de conectividad
+    # Información adicional sobre conectividad (siempre se muestra)
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -1009,14 +736,16 @@ with tabs[6]:
 with tabs[7]:
     st.header("KPIs EN TIEMPO REAL")
     
+    # Simular datos en tiempo real (se actualizarían con APIs reales)
     import random
+    from datetime import datetime, timedelta
     
-    # Dashboard ejecutivo  
+    # Generar métricas simuladas pero realistas
     st.subheader("DASHBOARD EJECUTIVO")
     
     col1, col2, col3, col4 = st.columns(4)
     
-    # Scores simulados realistas
+    # Simular scores basados en datos reales del sector
     score_general = random.randint(72, 78)
     score_estrategico = random.randint(68, 75)
     score_operacional = random.randint(75, 82)
@@ -1058,11 +787,12 @@ with tabs[7]:
         </div>
         """, unsafe_allow_html=True)
     
-    # Operaciones en tiempo real
+    # Métricas operativas en tiempo real
     st.subheader("OPERACIONES EN TIEMPO REAL")
     
     col1, col2, col3, col4 = st.columns(4)
     
+    # Generar datos realistas de operaciones
     vuelos_hoy = random.randint(85, 120)
     pasajeros_hoy = vuelos_hoy * random.randint(120, 180)
     puntualidad = random.uniform(88, 95)
@@ -1104,9 +834,10 @@ with tabs[7]:
         </div>
         """, unsafe_allow_html=True)
     
-    # Gráfico de tendencias
+    # Gráfico de tendencia de operaciones
     st.subheader("TENDENCIA DE OPERACIONES (ÚLTIMOS 7 DÍAS)")
     
+    # Generar datos de los últimos 7 días
     dias = []
     vuelos_semana = []
     pasajeros_semana = []
@@ -1151,7 +882,7 @@ with tabs[7]:
     
     st.plotly_chart(fig_tendencia, use_container_width=True)
     
-    # KPIs adicionales
+    # Indicadores de rendimiento
     st.subheader("INDICADORES CLAVE DE RENDIMIENTO")
     
     col1, col2 = st.columns(2)
@@ -1168,6 +899,7 @@ with tabs[7]:
         st.metric("👥 **Ocupación laboral**", "94.2%", "Personal completo")
         st.metric("🌍 **Conectividad internacional**", "28%", "+5% vs año anterior")
     
+    # Nota sobre fuentes de datos
     st.info("**Nota**: Estos KPIs se actualizan cada 15 minutos con datos de sistemas operativos, APIs gubernamentales y fuentes externas de aviación.")
 
 # Footer
