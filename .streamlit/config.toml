@@ -10,3 +10,11 @@ port = 8501
 
 [browser]
 gatherUsageStats = false
+
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"
+
+[ui]
+hideTopBar = true
+hideSidebarNav = false

@@ -45,10 +45,23 @@ footer {
     visibility: hidden;
 }
 
-/* OCULTAR COMPLETAMENTE LOGO/BOTÓN DE GITHUB */
-.viewerBadge_container__1QSob {
+/* OCULTAR COMPLETAMENTE LOGO/BOTÓN DE GITHUB - MÁXIMA AGRESIÓN */
+.viewerBadge_container__1QSob,
+.viewerBadge_container__r5tak,
+.viewerBadge_container,
+[data-testid="ViewerBadge"],
+[data-testid="viewer-badge"],
+.viewer-badge,
+.stActionButton,
+.stAppViewBlockContainer > .element-container:last-child {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
 }
 
 /* Selectores adicionales para GitHub badge */
@@ -394,11 +407,39 @@ function createSidebarToggle() {
     }
 }
 
-// FUNCIÓN PARA ELIMINAR CUALQUIER ELEMENTO DE GITHUB
+// FUNCIÓN ULTRA-AGRESIVA PARA ELIMINAR GITHUB - INMEDIATA
 function removeGitHubElements() {
+    console.log('🔥 ELIMINANDO ELEMENTOS GITHUB...');
+    
+    // ELIMINAR POR SELECTORES ESPECÍFICOS
+    const selectors = [
+        'a[href*="github"]',
+        '[data-testid="ViewerBadge"]',
+        '[data-testid="viewer-badge"]', 
+        '.viewerBadge_container__1QSob',
+        '.viewerBadge_container__r5tak',
+        '.viewerBadge_container',
+        '.viewer-badge',
+        '.stActionButton',
+        '.viewerBadge_link__1S137',
+        '.viewerBadge_text__1JaDK',
+        '.stToolbar',
+        '.toolbar'
+    ];
+    
+    selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            console.log('🗑️ Eliminando elemento:', selector);
+            el.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; width: 0 !important; height: 0 !important; position: absolute !important; left: -9999px !important;';
+            el.remove();
+        });
+    });
+    
     // Buscar y eliminar elementos por href
     const githubLinks = document.querySelectorAll('a[href*="github"]');
     githubLinks.forEach(link => {
+        console.log('🗑️ Eliminando link GitHub:', link.href);
         link.style.display = 'none';
         link.remove();
     });
@@ -432,14 +473,25 @@ function removeGitHubElements() {
     });
 }
 
+// EJECUTAR INMEDIATAMENTE AL CARGAR EL SCRIPT
+removeGitHubElements();
+
 // Ejecutar cuando la página esté lista
 setTimeout(createSidebarToggle, 1000);
 setTimeout(createSidebarToggle, 3000); // Segundo intento por si no carga la primera vez
 
-// Eliminar elementos de GitHub continuamente
-setTimeout(removeGitHubElements, 500);
-setTimeout(removeGitHubElements, 2000);
-setTimeout(removeGitHubElements, 5000);
+// Eliminar elementos de GitHub AGRESIVAMENTE
+setTimeout(removeGitHubElements, 0);    // Inmediato
+setTimeout(removeGitHubElements, 100);  // 100ms
+setTimeout(removeGitHubElements, 300);  // 300ms
+setTimeout(removeGitHubElements, 500);  // 500ms
+setTimeout(removeGitHubElements, 1000); // 1s
+setTimeout(removeGitHubElements, 2000); // 2s
+setTimeout(removeGitHubElements, 5000); // 5s
+
+// Ejecutar cada 2 segundos por 30 segundos
+let githubCleanupInterval = setInterval(removeGitHubElements, 2000);
+setTimeout(() => clearInterval(githubCleanupInterval), 30000);
 
 // Observer para eliminar elementos de GitHub que aparezcan dinámicamente
 const observer = new MutationObserver(function(mutations) {

@@ -45,10 +45,23 @@ footer {
     visibility: hidden;
 }
 
-/* OCULTAR COMPLETAMENTE LOGO/BOTÓN DE GITHUB */
-.viewerBadge_container__1QSob {
+/* OCULTAR COMPLETAMENTE LOGO/BOTÓN DE GITHUB - MÁXIMA AGRESIÓN */
+.viewerBadge_container__1QSob,
+.viewerBadge_container__r5tak,
+.viewerBadge_container,
+[data-testid="ViewerBadge"],
+[data-testid="viewer-badge"],
+.viewer-badge,
+.stActionButton,
+.stAppViewBlockContainer > .element-container:last-child {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
 }
 
 /* Selectores adicionales para GitHub badge */
