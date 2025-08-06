@@ -32,7 +32,7 @@ st.set_page_config(
     }
 )
 
-# Ocultar elementos de Streamlit
+# Ocultar elementos de Streamlit pero preservar sidebar
 st.markdown("""
 <style>
 /* Ocultar botón Deploy */
@@ -40,35 +40,9 @@ st.markdown("""
     display: none;
 }
 
-/* Ocultar menú hamburger */
-#MainMenu {
-    visibility: hidden;
-}
-
 /* Ocultar footer "Made with Streamlit" */
 footer {
     visibility: hidden;
-}
-
-/* Ocultar header pero preservar funcionalidad del sidebar */
-header[data-testid="stHeader"] {
-    display: none;
-}
-
-/* Alternativa más específica para ocultar header sin afectar sidebar */
-.stApp > header {
-    display: none;
-}
-
-/* Preservar el botón de toggle del sidebar */
-button[kind="header"] {
-    display: block !important;
-    visibility: visible !important;
-}
-
-/* Asegurar que el sidebar toggle esté visible */
-.css-1d391kg, .css-1rs6os, .css-17ziqus {
-    display: block !important;
 }
 
 /* Ocultar botón GitHub si aparece */
@@ -76,62 +50,54 @@ button[kind="header"] {
     display: none;
 }
 
-/* Ocultar elementos específicos del header pero no el sidebar toggle */
-header .css-1avcm0n {
+/* ENFOQUE MÍNIMO: Solo ocultar elementos específicos del menú */
+#MainMenu > div {
     display: none;
 }
 
-/* Mantener visible el área del sidebar toggle */
-.css-1y4p8pa {
-    display: block !important;
-}
-
-/* SIDEBAR TOGGLE - Enfoque más agresivo para versión hosteada */
-[data-testid="collapsedControl"] {
+/* Preservar header completamente para mantener funcionalidad sidebar */
+header {
     display: block !important;
     visibility: visible !important;
-    z-index: 999999 !important;
+}
+
+/* Ocultar solo elementos específicos dentro del header */
+header .css-1avcm0n,
+header .css-12oz5g7,
+header .css-1v3fvcr {
+    display: none !important;
+}
+
+/* CREAR BOTÓN MANUAL DEL SIDEBAR */
+.sidebar-toggle {
     position: fixed !important;
-    top: 0.75rem !important;
-    left: 0.75rem !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 999999 !important;
     background: #003566 !important;
-    border-radius: 4px !important;
-    padding: 4px !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
 }
 
-/* SIDEBAR TOGGLE - Selector más amplio */
-.css-1rs6os .css-17lntkn, 
-.css-1d391kg, 
-.css-1y4p8pa,
-.css-1544g2n {
+.sidebar-toggle:hover {
+    background: #0496FF !important;
+}
+
+/* Asegurar que TODOS los elementos del sidebar toggle sean visibles */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarNav"],
+button[kind="header"],
+button[title*="sidebar"],
+button[title*="Sidebar"] {
     display: block !important;
     visibility: visible !important;
     z-index: 999999 !important;
-}
-
-/* SIDEBAR TOGGLE - Para cualquier elemento con collapse */
-*[data-testid*="collapse"],
-*[data-testid*="sidebar"] button,
-.stSidebar button {
-    display: block !important;
-    visibility: visible !important;
-}
-
-/* Asegurar que el sidebar toggle sea siempre visible */
-.css-1544g2n {
-    display: block !important;
-}
-
-/* Para versiones más recientes de Streamlit */
-button[title="Open sidebar"] {
-    display: block !important;
-    visibility: visible !important;
-}
-
-button[title="Close sidebar"] {
-    display: block !important;
-    visibility: visible !important;
 }
 
 /* Ajustar margen superior */
@@ -336,6 +302,66 @@ button[title="Close sidebar"] {
     }
 }
 </style>
+""", unsafe_allow_html=True)
+
+# JavaScript para crear botón manual del sidebar
+st.markdown("""
+<script>
+function toggleSidebar() {
+    // Buscar el botón nativo del sidebar
+    const sidebarButton = document.querySelector('[data-testid="collapsedControl"]') || 
+                         document.querySelector('button[title*="sidebar"]') ||
+                         document.querySelector('button[title*="Sidebar"]') ||
+                         document.querySelector('.css-1d391kg') ||
+                         document.querySelector('.css-1y4p8pa');
+    
+    if (sidebarButton) {
+        sidebarButton.click();
+    } else {
+        // Si no encontramos el botón, intentar toggle via CSS
+        const sidebar = document.querySelector('[data-testid="stSidebar"]');
+        if (sidebar) {
+            if (sidebar.style.display === 'none') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        }
+    }
+}
+
+// Crear botón manual si no existe
+function createSidebarToggle() {
+    if (!document.querySelector('.manual-sidebar-toggle')) {
+        const button = document.createElement('button');
+        button.innerHTML = '☰ Menú';
+        button.className = 'manual-sidebar-toggle';
+        button.style.cssText = `
+            position: fixed !important;
+            top: 1rem !important;
+            left: 1rem !important;
+            z-index: 999999 !important;
+            background: #003566 !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 8px 12px !important;
+            cursor: pointer !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        `;
+        button.onclick = toggleSidebar;
+        button.onmouseover = function() { this.style.background = '#0496FF !important'; };
+        button.onmouseout = function() { this.style.background = '#003566 !important'; };
+        document.body.appendChild(button);
+    }
+}
+
+// Ejecutar cuando la página esté lista
+setTimeout(createSidebarToggle, 1000);
+setTimeout(createSidebarToggle, 3000); // Segundo intento por si no carga la primera vez
+</script>
 """, unsafe_allow_html=True)
 
 # Colores del tema Aerospace
